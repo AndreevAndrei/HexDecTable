@@ -27,11 +27,11 @@ const menu = {
       let tx = Math.floor(settings.screen.width/game.map.width), ty = Math.floor((settings.screen.height-4)/game.map.height)
       game.map.cellSize = Math.min(tx, ty)
       settings.screen.offset.x = Math.floor((settings.screen.width - game.map.cellSize*game.map.width)/2)
-      settings.screen.offset.y = dy + Math.floor((settings.screen.height - dy - game.map.cellSize*game.map.height)/2) // for symmetry cut off top 4px
+      settings.screen.offset.y = dy + Math.floor((settings.screen.height - dy - game.map.cellSize*1.25*game.map.height)/2) // for symmetry cut off top 4px
     } else {
       let tx = Math.floor(settings.screen.width/game.map.height), ty = Math.floor((settings.screen.height-4)/game.map.width)
       game.map.cellSize = Math.min(tx, ty)
-      settings.screen.offset.x = Math.floor((settings.screen.width - game.map.cellSize*game.map.height)/2)
+      settings.screen.offset.x = Math.floor((settings.screen.width - game.map.cellSize*1.25*game.map.height)/2)
       settings.screen.offset.y = dy + Math.floor((settings.screen.height - dy - game.map.cellSize*game.map.width)/2)
     }
   },
@@ -45,7 +45,7 @@ const menu = {
     for(let j = 0; j < (settings.screen.orientation == ScreenOrientation.PORTRAIT ? game.map.height : game.map.width); j++) {
       for(let i = 0; i < (settings.screen.orientation == ScreenOrientation.PORTRAIT? game.map.width : game.map.height); i++) {
         ctx.fillStyle = (i+j)%2?"#656565":"#707070"
-        ctx.fillRect(settings.screen.offset.x + i*game.map.cellSize, settings.screen.offset.y + j*game.map.cellSize, game.map.cellSize, game.map.cellSize)
+        ctx.fillRect(settings.screen.offset.x + i*game.map.cellSize*1.25, settings.screen.offset.y + j*game.map.cellSize, game.map.cellSize*1.25, game.map.cellSize)
       }
     }
     ctx.fillStyle = "#000000A0"
